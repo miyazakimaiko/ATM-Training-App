@@ -1,10 +1,10 @@
-## ATM Training App
+## ATM Training App Overview
 
 The application is presumed to be used for a training purpose only: used by their training team to guide new customers and staff through the process of accessing an ATM system. This page describes the objectives and goal of the system and models the functional requirements with use cases, structure chart and data flow diagram. This is intended to direct the design and implementation of the system using the procedural programming paradigm.
 
-### Functional Objectives
+## Functional Objectives
 
-#### Log In
+### Log In
 - The system shall allow the customer to log in using their USERID and current PIN.
 - The system shall disable the login functionality after three attempts with the same USERID and enable the login functionality again if the app is restarted.
 
@@ -39,3 +39,4 @@ The application is presumed to be used for a training purpose only: used by thei
 ### Log out
 - The system shall reset total amount of withdrawal that has made in a session.
 - The system shall reset total amount of lodgement that has made in a session.
+- The system shall store the updated user’s data into a list of users.
