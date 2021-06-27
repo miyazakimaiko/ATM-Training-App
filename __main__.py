@@ -8,5 +8,3 @@ user = login_user()
 if user:
     from user_main_menu import run_user_main_menu
     run_user_main_menu(user)
-else:
-    print("Sorry, bye bye")
