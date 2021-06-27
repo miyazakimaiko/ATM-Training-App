@@ -11,8 +11,7 @@ def show_user_main_menu_title():
     print('2. Withdrawal')
     print('3. Lodgement')
     print('4. View Statement')
-    print('5. View Transactions')
-    print('6. Log Out')
+    print('5. Log Out')
     print()
 
 
@@ -50,14 +49,17 @@ def run_user_main_menu(user):
         run_user_main_menu(user)
 
     elif number == 3:
-        print('3. Lodgement')
+        from functions import lodge_money
+        lodge_money.main(user)
+        input('Press Enter to go back to the User Main Menu...')
+        run_user_main_menu(user)
 
     elif number == 4:
-        print('4. View Statement')
+        from functions import view_statement
+        view_statement.main(user)
+        input('Press Enter to go back to the User Main Menu...')
+        run_user_main_menu(user)
 
     elif number == 5:
-        print('5. View Transactions')
-
-    elif number == 6:
         from functions import logout
         logout.main()
