@@ -43,7 +43,7 @@ def run_user_main_menu(user):
         change_pin.main(user)
         input('Press Enter to go back to the User Main Menu...')
         run_user_main_menu(user)
-        
+
     elif number == 2:
         print('2. Withdrawal')
 
@@ -57,4 +57,5 @@ def run_user_main_menu(user):
         print('5. View Transactions')
 
     elif number == 6:
-        print('6. Log Out')
+        from functions import logout
+        logout.main()

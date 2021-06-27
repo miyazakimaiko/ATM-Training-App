@@ -1,4 +1,5 @@
 import os
+import csv
 
 user_list = []
 
@@ -9,7 +10,7 @@ with open(users_csv, newline='\n') as csv_file:
 
     # Extract header individually
     # It contains: USERID, PIN, BALANCE, OVERDRAFT
-    header = csv_file.readline().rstrip('\n')
+    header = csv_file.readline().rstrip('\r\n')
     keys = header.split(',')
 
     # Read rest of lines
@@ -18,19 +19,20 @@ with open(users_csv, newline='\n') as csv_file:
         values = row.split(',')
 
         for index, value in enumerate(values):
-
             # values[0] is USERID (integer)
             # values[1] is PIN (integer)
             # values[2] is BALANCE (float)
             # values[3] is OVERDRAFT (Yes/No)
             if index in [0, 1]:
                 value = int(value)
+
             elif index == 2:
                 value = float(value)
+
             elif index == 3:
                 if value == "Yes":
                     value = True
-                else:
+                elif value == "No":
                     value = False
 
             user[keys[index]] = value
@@ -38,3 +40,25 @@ with open(users_csv, newline='\n') as csv_file:
         user_list.append(user)
 
     csv_file.close()
+
+
+if os.path.isfile(users_csv):
+    os.remove(users_csv)
+else:    ## Show an error ##
+    print("Error: %s file not found" % users_csv)
+
+
+def create_new_users_csv():
+    with open(users_csv, 'w+', newline='\n') as csv_file:
+        line = 0
+        writer = csv.writer(csv_file)
+        
+        for user in user_list:
+            if line == 0:
+                header = list(user.keys())
+                writer.writerow(header)
+
+            data = list(user.values())
+            writer.writerow(data)
+
+            line += 1
