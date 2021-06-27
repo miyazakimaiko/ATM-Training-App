@@ -3,7 +3,6 @@ import os
 def show_user_main_menu_title():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-    print(f"LOGIN SUCCESSFUL")
     print()
     print('User Main Menu')
     print()
@@ -45,7 +44,10 @@ def run_user_main_menu(user):
         run_user_main_menu(user)
 
     elif number == 2:
-        print('2. Withdrawal')
+        from functions import withdraw_money
+        withdraw_money.main(user)
+        input('Press Enter to go back to the User Main Menu...')
+        run_user_main_menu(user)
 
     elif number == 3:
         print('3. Lodgement')
