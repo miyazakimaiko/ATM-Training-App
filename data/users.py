@@ -30,9 +30,9 @@ with open(users_csv, newline='\n') as csv_file:
                 value = float(value)
 
             elif index == 3:
-                if value == "Yes":
+                if value == "Yes" or "True":
                     value = True
-                elif value == "No":
+                elif value == "No" or "False":
                     value = False
 
             user[keys[index]] = value
@@ -42,13 +42,12 @@ with open(users_csv, newline='\n') as csv_file:
     csv_file.close()
 
 
-if os.path.isfile(users_csv):
-    os.remove(users_csv)
-else:    ## Show an error ##
-    print("Error: %s file not found" % users_csv)
+def overwrite_users_csv():
+    if os.path.isfile(users_csv):
+        os.remove(users_csv)
+    else:    ## Show an error ##
+        print("Error: %s file not found" % users_csv)
 
-
-def create_new_users_csv():
     with open(users_csv, 'w+', newline='\n') as csv_file:
         line = 0
         writer = csv.writer(csv_file)
