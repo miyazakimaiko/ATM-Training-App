@@ -74,7 +74,7 @@ def login_user():
             print("❌ Wrong PIN.")
 
         if pin_attempts >= 3:
-            print("❌ Too many times")
+            print("❌ You have attempted to login too many times. Please try again later.")
             return None
 
         pin = get_pin_via_input()
