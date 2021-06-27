@@ -1,6 +1,7 @@
 import os
 
 total_withdrawal = 0
+MAX_WITHDRAWAL_PER_SESSION = 500
 
 def display_withdrawal_option_title():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -34,28 +35,28 @@ def get_number_via_input():
     return number
 
 
-def get_custom_withdraw_amount_via_input():
+def get_custom_withdrawal_amount_via_input():
     amount = input('Please enter amount: ')
 
     try:
         amount = float(amount)
     except:
         print('❌ Please enter digits.')
-        amount = get_custom_withdraw_amount_via_input()
+        amount = get_custom_withdrawal_amount_via_input()
 
     if amount < 5 or amount > 200:
         print('❌ Amount Out of Range: Minimum ¢5 and maximum ¢200 accepted.')
-        amount = get_custom_withdraw_amount_via_input()
+        amount = get_custom_withdrawal_amount_via_input()
 
     if amount % 5 != 0:
         print('❌ Only amount in multiple of 5 can be withdrawn.')
-        amount = get_custom_withdraw_amount_via_input()
+        amount = get_custom_withdrawal_amount_via_input()
 
     return amount
 
 
 def is_withdrawable(amount, user):
-    if total_withdrawal + amount > 500:
+    if total_withdrawal + amount > MAX_WITHDRAWAL_PER_SESSION:
         print()
         print('❌ Your requested amount exceeds the limit of withdrawals in a session.')
         return False
@@ -95,7 +96,7 @@ def withdraw_withdrawable_amount(user):
         amount = 100
 
     elif number == 5:
-        amount = get_custom_withdraw_amount_via_input()
+        amount = get_custom_withdrawal_amount_via_input()
 
     elif number == 6:
         return
