@@ -11,7 +11,7 @@ The application is presumed to be used for a training purpose only: used by thei
 ### Change PIN
 - The system shall allow the customer to change their PIN after logging in.
 
-![change pin DFD](./images/Change PIN DFD.jpg)
+<img src="images/Change PIN DFD.jpg"/>
 
 ### Withdraw money from their account
 - The system shall allow the customer to withdraw money up to ¢500, and the limit of withdrawal shall be reset as soon as the customer logs out.
