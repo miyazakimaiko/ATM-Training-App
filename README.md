@@ -8,6 +8,8 @@ The console application is presumed to be used for a training purpose only: used
 - The system shall allow the customer to log in using their USERID and current PIN.
 - The system shall disable the login functionality after three attempts with the same USERID and enable the login functionality again if the app is restarted.
 
+<img src="images/dfd-login.jpeg"/>
+
 ### Change PIN
 - The system shall allow the customer to change their PIN after logging in.
 
