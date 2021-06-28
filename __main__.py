@@ -1,10 +1,9 @@
-from user_main_menu import run_user_main_menu
-from login_menu import show_login_menu_title, login_user
+import user_main_menu
+import login_menu
 
-show_login_menu_title()
+login_menu.show_login_menu_title()
 
-user = login_user()
+user = login_menu.login_user()
 
 if user:
-    from user_main_menu import run_user_main_menu
-    run_user_main_menu(user)
+    user_main_menu.run_user_main_menu(user)
