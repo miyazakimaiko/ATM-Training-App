@@ -30,9 +30,9 @@ with open(users_csv, newline='\n') as csv_file:
                 value = float(value)
 
             elif index == 3:
-                if value == "Yes" or "True":
+                if value in ['Yes', 'True']:
                     value = True
-                elif value == "No" or "False":
+                elif value in ['No', 'False']:
                     value = False
 
             user[keys[index]] = value
