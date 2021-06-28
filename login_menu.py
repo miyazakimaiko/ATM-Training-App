@@ -1,6 +1,6 @@
 import os
 import getpass
-from data.users import user_list
+from data import users
 
 def show_login_menu_title():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -38,8 +38,8 @@ def get_pin_via_input():
     return pin
 
 
-def get_user_by_id(id, users):
-    for user in users:
+def get_user_by_id(id):
+    for user in users.user_list:
         if user['USERID'] == id:
             return user
     return None
@@ -63,7 +63,7 @@ def login_user():
             print("❌ Cannot find the user. Wrong USERID?")
 
         userid = get_userid_via_input()
-        user = get_user_by_id(userid, user_list)
+        user = get_user_by_id(userid)
 
         id_attempsts += 1
 

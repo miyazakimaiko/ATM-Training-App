@@ -1,5 +1,5 @@
 import os
-from data.transactions import transaction_list
+from data import transactions
 
 
 def display_view_statement_option_title():
@@ -22,10 +22,10 @@ def display_account_statement(user):
     print()
 
 
-def display_transaction_history(user, transaction_list):
+def display_transaction_history(user):
     my_transactions = []
 
-    for transaction in transaction_list:
+    for transaction in transactions.transaction_list:
         if transaction['USERID'] == user['USERID']:
             my_transactions.append(transaction)
 
@@ -51,4 +51,4 @@ def main(user):
 
     display_account_statement(user)
 
-    display_transaction_history(user, transaction_list)
+    display_transaction_history(user)
