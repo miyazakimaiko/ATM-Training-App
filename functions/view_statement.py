@@ -2,6 +2,14 @@ import os
 from data import transactions
 
 
+def main(user):
+    display_view_statement_option_title()
+
+    display_account_statement(user)
+
+    display_transaction_history(user)
+
+
 def display_view_statement_option_title():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -44,11 +52,3 @@ def display_transaction_history(user):
             {str(tr['BALANCE_AFTER'])}")
 
     print()
-
-
-def main(user):
-    display_view_statement_option_title()
-
-    display_account_statement(user)
-
-    display_transaction_history(user)

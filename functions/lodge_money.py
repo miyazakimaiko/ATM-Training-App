@@ -4,6 +4,12 @@ total_lodgement = 0
 MAX_LODGEMENT_PER_SESSION = 5000
 
 
+def main(user):
+    display_lodgement_option_title()
+
+    lodge_lodgeable_amount(user)
+
+
 def display_lodgement_option_title():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -30,40 +36,6 @@ def get_number_via_input():
         number = get_number_via_input()
 
     return number
-
-
-def get_custom_lodgement_amount_via_input():
-    amount = input('Please enter amount: ')
-
-    try:
-        amount = float(amount)
-    except:
-        print('❌ Please enter digits.')
-        amount = get_custom_lodgement_amount_via_input()
-
-    if amount < 5 or amount > 2000:
-        print('❌ Amount Out of Range: Minimum ¢5 and maximum ¢2,000 accepted.')
-        amount = get_custom_lodgement_amount_via_input()
-
-    if amount % 5 != 0:
-        print('❌ Only amount in multiple of 5 can be lodged.')
-        amount = get_custom_lodgement_amount_via_input()
-
-    return amount
-
-
-def is_lodgeable(amount):
-    if total_lodgement + amount > MAX_LODGEMENT_PER_SESSION:
-        print()
-        print('❌ Your requested amount exceeds the limit of lodgements in a session.')
-        return False
-
-    return True
-
-
-def calculate_balance(amount, user):
-    user['BALANCE'] = user['BALANCE'] + amount
-    return user['BALANCE']
 
 
 def lodge_lodgeable_amount(user):
@@ -100,7 +72,35 @@ def lodge_lodgeable_amount(user):
             lodge_lodgeable_amount(user)
 
 
-def main(user):
-    display_lodgement_option_title()
+def get_custom_lodgement_amount_via_input():
+    amount = input('Please enter amount: ')
 
-    lodge_lodgeable_amount(user)
+    try:
+        amount = float(amount)
+    except:
+        print('❌ Please enter digits.')
+        amount = get_custom_lodgement_amount_via_input()
+
+    if amount < 5 or amount > 2000:
+        print('❌ Amount Out of Range: Minimum ¢5 and maximum ¢2,000 accepted.')
+        amount = get_custom_lodgement_amount_via_input()
+
+    if amount % 5 != 0:
+        print('❌ Only amount in multiple of 5 can be lodged.')
+        amount = get_custom_lodgement_amount_via_input()
+
+    return amount
+
+
+def is_lodgeable(amount):
+    if total_lodgement + amount > MAX_LODGEMENT_PER_SESSION:
+        print()
+        print('❌ Your requested amount exceeds the limit of lodgements in a session.')
+        return False
+
+    return True
+
+
+def calculate_balance(amount, user):
+    user['BALANCE'] = user['BALANCE'] + amount
+    return user['BALANCE']

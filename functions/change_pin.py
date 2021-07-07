@@ -1,35 +1,20 @@
 import os
 import getpass
 
+def main(user):
+    display_change_pin_option_title()
+
+    verify_current_pin(user)
+
+    set_new_pin(user)
+
+
 def display_change_pin_option_title():
     os.system('cls' if os.name == 'nt' else 'clear')
 
     print()
     print('Selected: 1. Change PIN')
     print()
-
-
-def get_pin_via_input(message):
-    pin = getpass.getpass(prompt=message, stream=None)
-
-    try:
-        pin = int(pin)
-    except:
-        print("❌ Format Error: Please enter digits.")
-        pin = get_pin_via_input(message)
-
-    if len(str(pin)) != 4:
-        print("❌ Error: PIN should be four digits.")
-        pin = get_pin_via_input(message)
-
-    return pin
-
-
-def is_pin_matched(pin, user):
-    if pin == user['PIN']:
-        return True
-
-    return False
 
 
 def verify_current_pin(user):
@@ -58,10 +43,25 @@ def set_new_pin(user):
         set_new_pin(user)
 
 
-def main(user):
-    display_change_pin_option_title()
+def get_pin_via_input(message):
+    pin = getpass.getpass(prompt=message, stream=None)
 
-    verify_current_pin(user)
+    try:
+        pin = int(pin)
+    except:
+        print("❌ Format Error: Please enter digits.")
+        pin = get_pin_via_input(message)
 
-    set_new_pin(user)
+    if len(str(pin)) != 4:
+        print("❌ Error: PIN should be four digits.")
+        pin = get_pin_via_input(message)
+
+    return pin
+
+
+def is_pin_matched(pin, user):
+    if pin == user['PIN']:
+        return True
+
+    return False
 

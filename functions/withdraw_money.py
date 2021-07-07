@@ -3,6 +3,13 @@ import os
 total_withdrawal = 0
 MAX_WITHDRAWAL_PER_SESSION = 500
 
+
+def main(user):
+    display_withdrawal_option_title()
+
+    withdraw_withdrawable_amount(user)
+
+
 def display_withdrawal_option_title():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -17,6 +24,53 @@ def display_withdrawal_option_title():
     print('5. Custom')
     print('6. Exit')
     print()
+
+
+def withdraw_withdrawable_amount(user):
+    global total_withdrawal
+    number = get_number_via_input()
+
+    amount = None
+    withdrawable = False
+
+    if number == 1:
+        amount = 20
+
+    elif number == 2:
+        amount = 40
+
+    elif number == 3:
+        amount = 60
+        
+
+    elif number == 4:
+        amount = 100
+
+    elif number == 5:
+        amount = get_custom_withdrawal_amount_via_input()
+
+    elif number == 6:
+        return
+
+    if amount is not None:
+        withdrawable = is_withdrawable(amount, user)
+
+        if withdrawable:
+            os.system('cls' if os.name == 'nt' else 'clear')
+
+            balance = calculate_balance(amount, user)
+            total_withdrawal += amount
+            print()
+            print(f"You have withdrawn {amount} (¢)")
+            print()
+            print(f"Balance: {balance} (¢)")
+            print()
+
+        else:
+            print()
+            print('❌ The amount you have entered is not withdrawable. Please try with different amount.')
+            print()
+            withdraw_withdrawable_amount(user)
 
 
 def get_number_via_input():
@@ -73,56 +127,3 @@ def is_withdrawable(amount, user):
 def calculate_balance(amount, user):
     user['BALANCE'] = user['BALANCE'] - amount
     return user['BALANCE']
-
-
-def withdraw_withdrawable_amount(user):
-    global total_withdrawal
-    number = get_number_via_input()
-
-    amount = None
-    withdrawable = False
-
-    if number == 1:
-        amount = 20
-
-    elif number == 2:
-        amount = 40
-
-    elif number == 3:
-        amount = 60
-        
-
-    elif number == 4:
-        amount = 100
-
-    elif number == 5:
-        amount = get_custom_withdrawal_amount_via_input()
-
-    elif number == 6:
-        return
-
-    if amount is not None:
-        withdrawable = is_withdrawable(amount, user)
-
-        if withdrawable:
-            os.system('cls' if os.name == 'nt' else 'clear')
-
-            balance = calculate_balance(amount, user)
-            total_withdrawal += amount
-            print()
-            print(f"You have withdrawn {amount} (¢)")
-            print()
-            print(f"Balance: {balance} (¢)")
-            print()
-
-        else:
-            print()
-            print('❌ The amount you have entered is not withdrawable. Please try with different amount.')
-            print()
-            withdraw_withdrawable_amount(user)
-
-
-def main(user):
-    display_withdrawal_option_title()
-
-    withdraw_withdrawable_amount(user)
