@@ -46,9 +46,6 @@ def display_transaction_history(user):
     print("---------------------------------------------------------------------------")
     
     for tr in my_transactions:
-        print(f"{str(tr['DATE']).ljust(10)}\
-            {tr['TRANSACTION'].ljust(10)}\
-            {str(tr['AMOUNT']).ljust(10)}\
-            {str(tr['BALANCE_AFTER'])}")
+        print(f"{str(tr['DATE']).ljust(22)}{tr['TRANSACTION'].ljust(22)}{str(tr['AMOUNT']).ljust(22)}{str(tr['BALANCE_AFTER'])}")
 
     print()
