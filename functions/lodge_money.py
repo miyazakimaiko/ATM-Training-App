@@ -22,22 +22,6 @@ def display_lodgement_option_title():
     print()
 
 
-def get_number_via_input():
-    number = input('Please enter a number 1 or 2: ')
-
-    try:
-        number = int(number)
-    except:
-        print('❌ Format Error: it is not a digit.')
-        number = get_number_via_input()
-
-    if number not in [1, 2]:
-        print('❌ Entered Digit Out of Range Error')
-        number = get_number_via_input()
-
-    return number
-
-
 def lodge_lodgeable_amount(user):
     global total_lodgement
     number = get_number_via_input()
@@ -70,6 +54,22 @@ def lodge_lodgeable_amount(user):
             print('❌ The amount you have entered is not lodgeable. Please try with different amount.')
             print()
             lodge_lodgeable_amount(user)
+
+
+def get_number_via_input():
+    number = input('Please enter a number 1 or 2: ')
+
+    try:
+        number = int(number)
+    except:
+        print('❌ Format Error: it is not a digit.')
+        number = get_number_via_input()
+
+    if number not in [1, 2]:
+        print('❌ Entered Digit Out of Range Error')
+        number = get_number_via_input()
+
+    return number
 
 
 def get_custom_lodgement_amount_via_input():
